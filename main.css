@@ -1765,7 +1765,6 @@ textarea.form__field {
 
 
 
-
 .loader-wrapper {
   font-family: 'Outfit', sans-serif;
   background-color: #131417;  
@@ -1793,44 +1792,44 @@ textarea.form__field {
 }
 
 .name-animation {
-  height: 50px;
+  height: 2.81rem;
   overflow: hidden;
   margin-left: 1rem;
   display: inline-block;
 }
 
-.name-animation > div > div {
-  padding: 0.25rem 0.75rem;
+.name-slide {
+  animation: name-scroll 8s ease-in-out infinite;
+}
+
+.name-slide > div {
   height: 2.81rem;
-  margin-bottom: 2.81rem;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.75rem;
 }
 
-.name-animation div:first-child {
-  animation: name-scroll 8s infinite;
-}
-
-.first-name div {
+.name-slide > div:nth-child(1) {
   background-color: #20a7d8;
 }
-.second-name div {
+
+.name-slide > div:nth-child(2) {
   background-color: #CD921E;
 }
-.third-name div {
+
+.name-slide > div:nth-child(3) {
   background-color: #c10528;
 }
 
 @keyframes name-scroll {
-  0% {margin-top: 0;}
-  10% {margin-top: 0;}
-  20% {margin-top: -5.62rem;}
-  30% {margin-top: -5.62rem;}
-  40% {margin-top: -11.24rem;}
-  60% {margin-top: -11.24rem;}
-  70% {margin-top: -5.62rem;}
-  80% {margin-top: -5.62rem;}
-  90% {margin-top: 0;}
-  100% {margin-top: 0;}
+  0%, 10% { transform: translateY(0); }
+  15%, 25% { transform: translateY(-2.81rem); }
+  30%, 40% { transform: translateY(-5.62rem); }
+  50%, 60% { transform: translateY(-5.62rem); }
+  65%, 75% { transform: translateY(-2.81rem); }
+  80%, 90% { transform: translateY(0); }
+  100% { transform: translateY(0); }
 }
 
 .loading-bar {
@@ -1889,7 +1888,7 @@ textarea.form__field {
   animation: blink-shadow 1s infinite;
   cursor: pointer;
   font-size: 0.6em;
-  font-weight: 100; /* Thin font weight */
+  font-weight: 100;
 }
 
 @keyframes blink-shadow {
@@ -1914,3 +1913,4 @@ textarea.form__field {
       text-align: center;
   }
 }
+
