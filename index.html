@@ -13,6 +13,17 @@
     <link rel="stylesheet" href="./main.css" />
   </head>
   <body>
+    <div id="loader" class="loader-wrapper">
+      <div class="loader-content">
+          <p class="loader-text">Hello 👋 I'm</p>
+          <section class="name-animation">
+              <div class="first-name"><div>Fahad Siraj</div></div>
+              <div class="second-name"><div>CODEX61814</div></div>
+              <div class="third-name"><div>Web Developer</div></div>
+          </section>
+      </div>
+      <div class="loading-bar"></div>
+  </div>
 
     <!--SECTION 01-->
     <div class="bg-image">
@@ -345,12 +356,25 @@
         <li><button class="btn-grad lets-talk"><i class="bi bi-chat"></i>&nbsp;LET'S TALK</button></li>
       </ul>
     </div>
+
     <script src="./script.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
-      AOS.init();
+     window.onload = function() {
+            const loadingBar = document.querySelector(".loading-bar");
+            loadingBar.classList.remove("loading-bar");
+            loadingBar.classList.add("tap-to-open");
+            loadingBar.textContent = "Tap to Open";
+
+            document.querySelector('#loader').addEventListener('click', function() {
+                document.querySelector('#loader').style.display = 'none';
+                setTimeout(() => {
+                    AOS.init();
+                }, 500); // Adjust the delay time as needed (in milliseconds)
+            });
+        };
     </script>
   </body>
 </html>
