@@ -193,7 +193,7 @@ body {
     }
     
     .btn-grad:active {
-    transform: translateY(2px) rotate(-4deg);
+    transform: translateY(2px) rotate(-6deg);
     background-image: linear-gradient(
     to right,
     #ff00cc 0%,
