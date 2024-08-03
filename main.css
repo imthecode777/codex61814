@@ -325,13 +325,13 @@ body {
   margin-top: 120px;
   text-align: center;
   color: white;
-  max-width: 1000px;
+  max-width: 925px;
   z-index: 1;
   }
   
   .content h2 {
   font-family: Tomorrow;
-  font-size: 5rem;
+  font-size: 5.5rem;
   position: relative;
   z-index: 1;
   line-height: 1.2;
@@ -360,7 +360,7 @@ body {
   
   .content p {
   font-family: Raleway;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin-top: 20px;
   margin-bottom: 30px;
   }
