@@ -166,85 +166,125 @@ body {
   
   
   .btn-grad {
-  background-image: linear-gradient(
-  to right,
-  #ff00cc 0%,
-  #333399 51%,
-  #ff00cc 100%
-  );
-  margin-left: 25px;
-  padding: 12px 24px;
-  text-align: center;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;
-  border-radius: 25px;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  }
+    background-image: linear-gradient(
+    to right,
+    #ff00cc 0%,
+    #333399 51%,
+    #ff00cc 100%
+    );
+    margin-left: 25px;
+    padding: 12px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    position: relative;
+    overflow: hidden;
+    }
+    
+    .btn-grad:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+    }
+    
+    .btn-grad:active {
+    transform: translateY(2px) rotate(-4deg);
+    background-image: linear-gradient(
+    to right,
+    #ff00cc 0%,
+    #333399 51%,
+    #ff00cc 100%
+    );
+    background-position: right center;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    
+    .btn-grad.lets-talk {
+    background: transparent;
+    border: 3px solid white;
+    outline: none;
+    color: white;
+    }
+    
+    .btn-grad.lets-talk:hover {
+    outline: none;
+    background-color: #d4418e;
+    background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
+    border-width: 3px;
+    border-style: solid;
+    background-position: right center;
+    border-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
+    }
+    
+    .btn-grad.lets-talk:active {
+    transform: translateY(4px) scale(0.96);
+    background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
+    background-position: right center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+    
+    .btn-grad.lets-talk:active::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+    }
+
+    .btn-grad.lets-talk-nav {
+    background: transparent;
+    border: 3px solid white;
+    outline: none;
+    color: white;
+    }
+    
+    .btn-grad.lets-talk-nav:hover {
+    outline: none;
+    background-color: #d4418e;
+    background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
+    border-width: 3px;
+    border-style: solid;
+    background-position: right center;
+    border-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
+    }
+    
+    .btn-grad.lets-talk-nav:active {
+    transform: translateY(4px) scale(0.96);
+    background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
+    background-position: right center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+    
+    .btn-grad.lets-talk-nav:active::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+    }
+    
+    
   
-  .btn-grad:hover {
-  background-position: right center;
-  color: #fff;
-  text-decoration: none;
-  }
-  .btn-grad:active {
-  transform: translateY(2px);
-  background-color: #f0f0f0;
-  background-image: linear-gradient(
-  to right,
-  #ff00cc 0%,
-  #333399 51%,
-  #ff00cc 100%
-  );
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  }
-  .btn-grad.lets-talk {
-  background: transparent;
-  border: 3px solid white;
-  outline: none;
-  color: white;
-  }
-  .btn-grad.lets-talk:hover {
-  outline: none;
-  background-color: #d4418e;
-  background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
-  border-width: 3px;
-  border-style: solid;
-  background-position: right center;
-  border-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
-  }
-  .btn-grad.lets-talk:active {
-  transform: translateY(2px);
-  background-color: #f0f0f0;
-  background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  }
-  .btn-grad.lets-talk-nav{
-  background: transparent;
-  border: 3px solid white;
-  outline: none;
-  color: white;
-  }
-  .btn-grad.lets-talk-nav:hover {
-  outline: none;
-  background-color: #d4418e;
-  background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
-  border-width: 3px;
-  border-style: solid;
-  background-position: right center;
-  border-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
-  }
-  .btn-grad.lets-talk-nav:active {
-  transform: translateY(2px);
-  background-color: #f0f0f0;
-  background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  }
+  
+  
+  
+  
+  
+  
+  
+  
   
   /* Background Image */
   .bg-image {
@@ -285,13 +325,13 @@ body {
   margin-top: 120px;
   text-align: center;
   color: white;
-  max-width: 900px;
+  max-width: 1000px;
   z-index: 1;
   }
   
   .content h2 {
   font-family: Tomorrow;
-  font-size: 5rem;
+  font-size: 5.5rem;
   position: relative;
   z-index: 1;
   line-height: 1.2;
@@ -918,11 +958,88 @@ header p {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adjust shadow to match the pressed state */
 }
 
-
 #hover-video {
   filter: grayscale(100%);
   transition: filter 0.3s ease, transform 0.3s ease;
 }
+
+.first.cta-button {
+  background-color: transparent;
+  color: black;
+  font-weight: 900;
+  border: 2.5px solid black;
+}
+
+.first.cta-button:hover {
+  color: white;
+  background-color: black;
+  transform: translateY(-5px); /* Shift position */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: Add a subtle shadow */
+}
+
+.first.cta-button:active {
+  color: black;
+  background-color: darkgray; /* Change to a different background color when active */
+  transform: translateY(-2px) scale(0.98); /* Slightly scale down and move back to reduce 'pop' effect */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adjust shadow to match the pressed state */
+  border: 2.5px solid darkgray;
+}
+
+
+/* Ensure the section has a defined position to use for absolute positioning of the animation */
+#section-content {
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(315deg, #2d3436 0%, #d3d3d3 74%);
+  --new-bg: linear-gradient(315deg, #2d3436 0%, #d3d3d3 74%); /* Default to original background */
+}
+
+#section-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: var(--new-bg);
+  transition: background-image 0.5s ease; /* Smooth transition for background image change */
+  z-index: 0;
+}
+
+/* Ensure content inside the section is above the pseudo-element */
+#section-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animation for mouse enter */
+@keyframes circle-in-center {
+  from {
+      clip-path: circle(0% at var(--mouse-x) var(--mouse-y));
+  }
+  to {
+      clip-path: circle(125% at var(--mouse-x) var(--mouse-y));
+  }
+}
+
+.hover::before {
+  animation: circle-in-center 1.5s ease-in-out both;
+}
+
+/* Animation for mouse leave */
+@keyframes circle-out-center {
+  from {
+      clip-path: circle(125% at var(--mouse-x) var(--mouse-y));
+  }
+  to {
+      clip-path: circle(0% at var(--mouse-x) var(--mouse-y));
+  }
+}
+
+.leave::before {
+  animation: circle-out-center 1.5s ease-in-out both;
+}
+
 
 /* Combined Media query for small screens and larger small screens in landscape orientation */
 @media (max-width: 992px) and (orientation: landscape) {
