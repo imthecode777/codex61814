@@ -331,7 +331,7 @@ body {
   
   .content h2 {
   font-family: Tomorrow;
-  font-size: 5.5rem;
+  font-size: 5rem;
   position: relative;
   z-index: 1;
   line-height: 1.2;
@@ -360,7 +360,7 @@ body {
   
   .content p {
   font-family: Raleway;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   margin-top: 20px;
   margin-bottom: 30px;
   }
