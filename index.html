@@ -15,7 +15,8 @@
   <body>
     <div id="loader" class="loader-wrapper">
       <div class="loader-content">
-        <p class="loader-text">Hello <img
+        <p class="loader-text">Hello
+          <img
           width="40px"
           height="40px"
           src="https://cdn.jsdelivr.net/gh/svgmoji/svgmoji/packages/svgmoji__noto/svg/1F44B.svg"
@@ -50,12 +51,12 @@
             id="toggle-logo"
           />
           <ul class="navbar-list" id="navbar-list">
-            <li><a href="#home">HOME</a></li>
+            <li><a href="#home" onclick="location.reload();">HOME</a></li>
             <li><a href="#work">WORK</a></li>
             <li><a href="#about">ABOUT</a></li>
             <li><button class="btn-grad book-now"><i class="bi bi-bookmark"></i>&nbsp;BOOK NOW</button></li>
           </ul>
-          <button class="btn-grad lets-talk-nav"><i class="bi bi-chat-fill"></i>&nbsp;LET'S TALK</button>
+          <button class="btn-grad lets-talk-nav"><a href="#talk"><i class="bi bi-chat-fill"></i>&nbsp;LET'S TALK</a></button>
         </div>
       </nav>
       <div class="main">
@@ -68,7 +69,7 @@
             <div class="buttons">
               <button class="btn-grad book-now"><i class="bi bi-bookmark"></i>&nbsp;BOOK NOW</button>
               &nbsp;
-              <button class="btn-grad lets-talk"><i class="bi bi-chat-fill"></i>&nbsp;LET'S TALK</button>
+              <button class="btn-grad lets-talk"><a href="#talk"><i class="bi bi-chat-fill"></i>&nbsp;LET'S TALK</a></button>
             </div>
           </div>
         </div>
@@ -97,7 +98,7 @@
       </div>
     </header>
 <!--SECTION 03-->
-    <main>
+    <main id="work">
       <ul id="sections">
         <li class="section">
           <div
@@ -224,7 +225,7 @@
     </main>
 
 <!--SECTION 04-->
-    <div class="builder">
+    <div id="talk" class="builder">
       <div class="video-background">
         <video autoplay loop muted playsinline>
             <source src="./video/Vecteezy Purple-Gradient-Liquid-Smoke-Background-Water-Surface-And 6422166.mp4" type="video/mp4">
@@ -314,7 +315,7 @@
     </div>
     
 <!--SECTION 05-->
-    <footer class="footer">
+    <footer id="about" class="footer">
       <div class="container">
         <div class="row">
           <div class="col-md-4 col-12 logo">
@@ -332,7 +333,7 @@
             <a href="#">Contact</a>
           </div>
           <div class="col-md-4 col-12 contact text-md-end">
-            <a class="link" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="ADMIN">@CODEX61814</a>
+            <a class="link" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="ADMIN" onclick="location.reload();">@CODEX61814</a>
             <a class="link" href="https://www.instagram.com/p4vie._/" data-bs-toggle="tooltip" data-bs-placement="top" title="UI DESIGNER">@pavie</a>
             <div class="social-icons">
               <a href="https://signal.me/#eu/zSzvLvQgxYeqmqnZBEy6OM_2aI0rVzVuYn9cajSdX3ITSWY6id9OWpJAEYILxEQ-" class="bi bi-signal"></a>
@@ -348,7 +349,7 @@
 <!--SECTION 06-->
     <div class="sidebar">
       <ul class="sidebar-list">
-        <li><a href="#home">HOME</a></li>
+        <li><a href="#home" onclick="location.reload();">HOME</a></li>
         <li><a href="#work">WORK</a></li>
         <li><a href="#about">ABOUT</a></li>
         <li><button class="btn-grad book-now" id="button"><i class="bi bi-bookmark"></i>&nbsp;BOOK NOW</button></li>
