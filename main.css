@@ -132,37 +132,40 @@ body {
   }
   
   .navbar-list a {
-  text-decoration: none;
-  color: white;
-  font-size: 20px;
-  position: relative;
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    position: relative;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
   }
   
   .navbar-list a::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: -3px;
-  left: 0;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
   }
   
   .navbar-list a:hover::before,
   .navbar-list a:focus::before {
-  background-color: #ffffff;
+    background-color: #ffffff;
   }
   
   .navbar-list a:active {
-  transform: translateY(5px); /* Move the button down slightly */
-  color: #636564; /* Change the text color */
+    transform: translateY(5px); /* Move the button down slightly */
+    color: #636564; /* Change the text color */
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
   }
   
   .navbar-list a:active::before {
-  background-color: #636564; /* Change the underline color */
+    background-color: #636564; /* Change the underline color */
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
   }
+  
   
   
   .btn-grad {
@@ -646,7 +649,15 @@ body {
 }
 
 .sidebar-list li {
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Existing margin */
+}
+
+.sidebar-list li button {
+  margin-bottom: 15px; /* Add margin to buttons */
+}
+
+.sidebar-list li:last-child {
+  margin-bottom: 0; /* Optional: Remove bottom margin from the last list item */
 }
 
 .sidebar-list a {
