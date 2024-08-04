@@ -150,3 +150,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
 });
+
+
+document.querySelectorAll('.btn-grad.lets-talk, .btn-grad.lets-talk-nav').forEach(function(button) {
+  button.addEventListener('click', function() {
+      document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+  });
+});

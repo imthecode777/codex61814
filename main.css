@@ -184,18 +184,15 @@ body {
     font-size: 18px;
     position: relative;
     overflow: hidden;
-    }
-    .btn-grad a{
-      text-decoration: none; /* Remove underline on hover */
-      color: inherit;
-    }
-    .btn-grad:hover {
+}
+
+.btn-grad:hover {
     background-position: right center;
     color: #fff;
     text-decoration: none;
-    }
-    
-    .btn-grad:active {
+}
+
+.btn-grad:active {
     transform: translateY(2px) rotate(-6deg);
     background-image: linear-gradient(
     to right,
@@ -205,52 +202,16 @@ body {
     );
     background-position: right center;
     box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    
-    
-    .btn-grad.lets-talk {
-    background: transparent;
-    border: 3px solid white;
-    outline: none;
-    color: white;
-    }
-    
-    .btn-grad.lets-talk:hover {
-    outline: none;
-    background-color: #d4418e;
-    background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
-    border-width: 3px;
-    border-style: solid;
-    background-position: right center;
-    border-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
-    }
-    
-    .btn-grad.lets-talk:active {
-    transform: translateY(4px) scale(0.96);
-    background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
-    background-position: right center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    }
-    
-    .btn-grad.lets-talk:active::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease;
-    }
+}
 
-    .btn-grad.lets-talk-nav {
+.btn-grad.lets-talk, .btn-grad.lets-talk-nav {
     background: transparent;
     border: 3px solid white;
     outline: none;
     color: white;
-    }
-    
-    .btn-grad.lets-talk-nav:hover {
+}
+
+.btn-grad.lets-talk:hover, .btn-grad.lets-talk-nav:hover {
     outline: none;
     background-color: #d4418e;
     background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
@@ -258,16 +219,16 @@ body {
     border-style: solid;
     background-position: right center;
     border-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
-    }
-    
-    .btn-grad.lets-talk-nav:active {
+}
+
+.btn-grad.lets-talk:active, .btn-grad.lets-talk-nav:active {
     transform: translateY(4px) scale(0.96);
     background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
     background-position: right center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    }
-    
-    .btn-grad.lets-talk-nav:active::after {
+}
+
+.btn-grad.lets-talk:active::after, .btn-grad.lets-talk-nav:active::after {
     content: "";
     position: absolute;
     top: 0;
@@ -276,7 +237,7 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0.2);
     transition: background 0.3s ease;
-    }
+}
  
   /* Background Image */
   .bg-image {
