@@ -975,10 +975,10 @@ header p {
 /* Animation for mouse enter */
 @keyframes circle-in-center {
   from {
-      clip-path: circle(0% at var(--mouse-x) var(--mouse-y));
+    clip-path: circle(0% at var(--mouse-x) var(--mouse-y));
   }
   to {
-      clip-path: circle(125% at var(--mouse-x) var(--mouse-y));
+    clip-path: circle(125% at var(--mouse-x) var(--mouse-y));
   }
 }
 
@@ -989,10 +989,10 @@ header p {
 /* Animation for mouse leave */
 @keyframes circle-out-center {
   from {
-      clip-path: circle(125% at var(--mouse-x) var(--mouse-y));
+    clip-path: circle(125% at var(--mouse-x) var(--mouse-y));
   }
   to {
-      clip-path: circle(0% at var(--mouse-x) var(--mouse-y));
+    clip-path: circle(0% at var(--mouse-x) var(--mouse-y));
   }
 }
 

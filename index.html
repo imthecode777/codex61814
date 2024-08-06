@@ -358,30 +358,5 @@
     <script src="./script.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script>
-window.onload = function() {
-    // Ensure that the "Tap to Open" text only shows after everything is loaded
-    const loadingBar = document.querySelector(".loading-bar");
-    
-    // Simulate a brief delay to enhance user experience, if needed
-    setTimeout(() => {
-        loadingBar.classList.remove("loading-bar");
-        loadingBar.classList.add("tap-to-open");
-        
-        // Setting the text content
-        loadingBar.innerHTML = 'Tap to Open&nbsp;&nbsp;<i class="bi bi-arrow-right"></i>';
-    }, 100); // Adjust the delay as desired
-    
-    document.querySelector('#loader').addEventListener('click', function() {
-        // Hide the loader and show the main content
-        document.querySelector('#loader').style.display = 'none';
-        
-        // Initialize AOS (or any other animations) after the loader is removed
-        setTimeout(() => {
-            AOS.init();
-        }, 500); // Adjust the delay time as needed
-    });
-};
-    </script>
   </body>
 </html>
