@@ -45,65 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-//from settings
-document
-  .getElementById("contact-form")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    const button = document.querySelector(".form-button");
-    const buttonText = document.querySelector(".button-text");
-    const svg = document.querySelector(".custom-container");
-
-    buttonText.style.display = "none";
-    svg.style.display = "block";
-
-    const formData = new FormData(this);
-    fetch(this.action, {
-      method: this.method,
-      body: formData,
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        // Handle success
-        buttonText.style.display = "block";
-        svg.style.display = "none";
-        localStorage.setItem("formSubmitted", "true");
-        location.reload();
-      })
-      .catch((error) => {
-        // Handle error
-        buttonText.style.display = "block";
-        svg.style.display = "none";
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something Went Wrong!",
-          footer: '<a href="#">Why do I have this issue?</a>',
-          customClass: {
-            container: "swal2-dark",
-            confirmButton: "custom-swal-button",
-          },
-        });
-      });
-  });
-
-window.addEventListener("load", function () {
-  if (localStorage.getItem("formSubmitted") === "true") {
-    Swal.fire({
-      title: "Good job!",
-      text: "Message Sent Successfully!",
-      icon: "success",
-      customClass: {
-        container: "swal2-dark",
-        confirmButton: "custom-swal-button",
-      },
-    });
-    localStorage.removeItem("formSubmitted");
-  }
-});
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
