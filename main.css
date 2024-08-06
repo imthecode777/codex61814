@@ -169,6 +169,7 @@ body {
   
   
   .btn-grad {
+    font-family: Anton;
     background-image: linear-gradient(
     to right,
     #ff00cc 0%,
@@ -1993,5 +1994,140 @@ textarea.form__field {
       margin-top: 1rem;
       display: block;
       text-align: center;
+  }
+}
+  
+
+
+
+/* 3D Purple Effect */
+.bgblue {
+  background: linear-gradient(135deg, #f0eaff, #6a3b8a, #e3d7ff);
+  padding: 1px;
+  border-radius: 1.5rem;
+  box-shadow: 0px 1rem 2rem -0.8rem #2a2a5b, 0px 1rem 1.5rem -0.9rem #000000e1;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.card {
+  font-size: 1rem;
+  color: #dcd6f4;
+  background: linear-gradient(135deg, #321e54 0%, #6a3b8a 50%, #321e54 100%);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  box-shadow: 0px 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.card h1 {
+  font-family: 'Inter', sans-serif;
+  text-shadow: 0px 0px 5px #999999;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card .icon2 {
+  width: 48px;
+  height: 48px;
+  background-image: url('./img/nav_logo.png');
+  background-size: cover;
+  display: inline-block;
+  filter: brightness(1.2) drop-shadow(0 0 5px #0E0E10);
+  transition: filter 0.3s ease-in-out;
+  animation: glows 2s linear infinite;
+}
+
+@keyframes glows {
+  0% {
+      filter: brightness(1.2) drop-shadow(0 0 5px #0E0E10);
+  }
+  50% {
+      filter: brightness(1.2) drop-shadow(0 0 15px #0E0E10);
+  }
+  100% {
+      filter: brightness(1.2) drop-shadow(0 0 5px #0E0E10);
+  }
+}
+
+.card p {
+  font-family: 'Raleway', sans-serif;
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #a3a1c7;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+.swal2-popup {
+  padding: 0;
+  background: none;
+}
+
+.custom-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.custom-button {
+  font-family: 'Anton', sans-serif;
+  outline: none;
+  background: linear-gradient(145deg, #7a42b8, #5a2b73);
+  color: #fff;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4), 0 5px #4a1b6b;
+  transition: all 0.2s ease-in-out;
+  font-size: 1rem;
+  width: fit-content;
+  min-width: 100px;
+}
+
+.custom-button:hover {
+  background: linear-gradient(145deg, #8b54d1, #6a3b8a);
+}
+
+.custom-button:active {
+  background-color: #5a2b73;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4), 0 3px #4a1b6b;
+  transform: translateY(2px);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .card h1 {
+      font-size: 1.75rem;
+  }
+
+  .card p {
+      font-size: 0.875rem;
+  }
+
+  .custom-button {
+      font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card h1 {
+      font-size: 1.5rem;
+  }
+
+  .card p {
+      font-size: 0.75rem;
+  }
+
+  .custom-button {
+      font-size: 0.75rem;
+      padding: 8px;
   }
 }

@@ -141,3 +141,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+
+
+
+
+
+
+document.querySelector('.click').addEventListener('click', function() {
+  document.documentElement.classList.add('no-scroll');
+  document.body.classList.add('no-scroll');
+  
+  Swal.fire({
+      html: `
+          <div class="bgblue">
+              <div class="card">
+                  <h1><span class="icon2"></span>&nbsp;CODEX61814</h1>
+                  <p>Copyright © 2024. All Rights Reserved.</p>
+                  <div class="custom-button-container">
+                      <button class="custom-button">Exit&nbsp;&nbsp;<i class="bi bi-box-arrow-right"></i></button>
+                  </div>
+              </div>
+          </div>
+      `,
+      showConfirmButton: false,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      didClose: () => {
+          document.documentElement.classList.remove('no-scroll');
+          document.body.classList.remove('no-scroll');
+      }
+  });
+
+  document.querySelector('.custom-button').addEventListener('click', function() {
+      Swal.close();
+  });
+});
