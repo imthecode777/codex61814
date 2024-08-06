@@ -2115,6 +2115,10 @@ textarea.form__field {
   .custom-button {
       font-size: 0.875rem;
   }
+  .card .icon2{
+  width: 40px;
+  height: 40px;
+  }
 }
 
 @media (max-width: 480px) {
