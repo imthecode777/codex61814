@@ -159,6 +159,7 @@ document.querySelector(".click").addEventListener("click", function () {
     showConfirmButton: false,
     allowOutsideClick: false,
     allowEscapeKey: false,
+    backdrop: "rgba(0, 0, 0, 0.8)", // Added backdrop property
     didClose: () => {
       document.documentElement.classList.remove("no-scroll");
       document.body.classList.remove("no-scroll");
@@ -236,33 +237,19 @@ document.querySelectorAll(".btn-grad.book-now").forEach((button) => {
   });
 });
 
-
-
-
-
-
-
-
-
-
-
-
-// Function to disable body scroll
 function disableScroll() {
-  document.body.style.overflow = 'hidden';
-  document.body.style.position = 'fixed';
-  document.body.style.width = '100%';
+  document.body.style.overflow = "hidden";
+  document.body.style.position = "fixed";
+  document.body.style.width = "100%";
 }
 
-// Function to enable only vertical (Y-axis) scroll
 function enableScroll() {
-  document.body.style.overflowY = 'auto'; // Enable vertical scrolling
-  document.body.style.overflowX = 'hidden'; // Keep horizontal scrolling disabled
-  document.body.style.position = 'static';
-  document.body.style.width = 'auto';
+  document.body.style.overflowY = "auto";
+  document.body.style.overflowX = "hidden";
+  document.body.style.position = "static";
+  document.body.style.width = "auto";
 }
 
-// Function to show the notification with smooth transitions
 function showNotification(planTitle = "$199 - STARTUP PLAN") {
   const notifContainer = document.getElementById("notif-container");
   const notifMain = document.getElementById("notif-main");
@@ -270,29 +257,34 @@ function showNotification(planTitle = "$199 - STARTUP PLAN") {
 
   notifContainer.classList.add("fade-out");
 
-  notifContainer.addEventListener("transitionend", function onFadeOut() {
-    notifTitle.textContent = planTitle;
+  notifContainer.addEventListener(
+    "transitionend",
+    function onFadeOut() {
+      notifTitle.textContent = planTitle;
 
-    notifContainer.classList.remove("fade-out");
-    notifContainer.classList.add("fade-in");
+      notifContainer.classList.remove("fade-out");
+      notifContainer.classList.add("fade-in");
 
-    notifMain.style.display = "block";
-    notifMain.classList.add("show");
+      notifMain.style.display = "block";
+      notifMain.classList.add("show");
 
-    notifContainer.addEventListener("transitionend", () => {
-      notifContainer.classList.remove("fade-in");
-    }, { once: true });
+      notifContainer.addEventListener(
+        "transitionend",
+        () => {
+          notifContainer.classList.remove("fade-in");
+        },
+        { once: true }
+      );
 
-    notifContainer.removeEventListener("transitionend", onFadeOut);
-  }, { once: true });
+      notifContainer.removeEventListener("transitionend", onFadeOut);
+    },
+    { once: true }
+  );
 }
 
-// Function to handle SweetAlert2 dialog and manage notif-main visibility
 function handleCloseNotification() {
   const notifMain = document.getElementById("notif-main");
   const contactSection = document.querySelector("#contact-section.builder");
-
-  // Disable body scroll when alert is shown
   disableScroll();
 
   Swal.fire({
@@ -310,7 +302,6 @@ function handleCloseNotification() {
     },
     padding: "1.5rem",
   }).then((result) => {
-
     if (result.isConfirmed) {
       Swal.fire({
         title: "Deleted!",
@@ -326,11 +317,15 @@ function handleCloseNotification() {
       }).then(() => {
         notifMain.classList.add("fade-out");
         enableScroll();
-        notifMain.addEventListener("transitionend", function onClose() {
-          notifMain.style.display = "none";
-          notifMain.classList.remove("fade-out", "show");
-          notifMain.removeEventListener("transitionend", onClose);
-        }, { once: true });
+        notifMain.addEventListener(
+          "transitionend",
+          function onClose() {
+            notifMain.style.display = "none";
+            notifMain.classList.remove("fade-out", "show");
+            notifMain.removeEventListener("transitionend", onClose);
+          },
+          { once: true }
+        );
       });
     } else {
       notifMain.style.display = "block";
@@ -345,13 +340,14 @@ function handleCloseNotification() {
           }, 800);
         }, 200);
       } else {
-        console.error("Contact section with ID 'contact-section' and class 'builder' not found.");
+        console.error(
+          "Contact section with ID 'contact-section' and class 'builder' not found."
+        );
       }
     }
   });
 }
 
-// Event listeners for buttons with different plan titles
 document.getElementById("show-notif-button-1").addEventListener("click", () => {
   showNotification("$199 - STARTUP PLAN");
 });
@@ -364,10 +360,10 @@ document.getElementById("show-notif-button-3").addEventListener("click", () => {
   showNotification("$599 - PREMIUM PLAN");
 });
 
-// Event listener for the close icon with SweetAlert2 handling
-document.getElementById("notif-close-icon").addEventListener("click", handleCloseNotification);
+document
+  .getElementById("notif-close-icon")
+  .addEventListener("click", handleCloseNotification);
 
-// Event listeners to ensure notif-main shows after any button click
 document.querySelectorAll(".scroll-button").forEach((button) => {
   button.addEventListener("click", () => {
     const notifMain = document.getElementById("notif-main");
@@ -376,7 +372,6 @@ document.querySelectorAll(".scroll-button").forEach((button) => {
   });
 });
 
-// Function to scroll smoothly to the contact section and display notification
 function showNotification(planTitle = "$199 - STARTUP PLAN") {
   const notifContainer = document.getElementById("notif-container");
   const notifTitle = document.querySelector(".notif-title");
@@ -387,22 +382,29 @@ function showNotification(planTitle = "$199 - STARTUP PLAN") {
   setTimeout(() => {
     notifContainer.classList.add("fade-out");
 
-    notifContainer.addEventListener("transitionend", function onFadeOut() {
-      notifTitle.textContent = planTitle;
+    notifContainer.addEventListener(
+      "transitionend",
+      function onFadeOut() {
+        notifTitle.textContent = planTitle;
 
-      notifContainer.classList.remove("fade-out");
-      notifContainer.classList.add("fade-in");
+        notifContainer.classList.remove("fade-out");
+        notifContainer.classList.add("fade-in");
 
-      notifContainer.addEventListener("transitionend", () => {
-        notifContainer.classList.remove("fade-in");
-      }, { once: true });
+        notifContainer.addEventListener(
+          "transitionend",
+          () => {
+            notifContainer.classList.remove("fade-in");
+          },
+          { once: true }
+        );
 
-      notifContainer.removeEventListener("transitionend", onFadeOut);
-    }, { once: true });
+        notifContainer.removeEventListener("transitionend", onFadeOut);
+      },
+      { once: true }
+    );
   }, 500);
 }
 
-// Event listeners for buttons with different titles
 document.getElementById("show-notif-button-1").addEventListener("click", () => {
   showNotification("$199 - STARTUP PLAN");
 });
@@ -414,3 +416,128 @@ document.getElementById("show-notif-button-2").addEventListener("click", () => {
 document.getElementById("show-notif-button-3").addEventListener("click", () => {
   showNotification("$599 - PREMIUM PLAN");
 });
+
+function getSelectedPlan() {
+  const notifMain = document.getElementById("notif-main");
+  const subscriptionInput = document.querySelector(
+    "input[name='subscription']"
+  );
+  const notifTitle = document.querySelector(".notif-title");
+  const selectedPlan =
+    notifMain && notifMain.classList.contains("show")
+      ? notifTitle.textContent
+      : "NO PLANS CHOOSED";
+  subscriptionInput.value = selectedPlan;
+
+  return selectedPlan;
+}
+document
+  .getElementById("contact-form")
+  .addEventListener("submit", function (event) {
+    getSelectedPlan();
+    setTimeout(() => {
+      const subscriptionInput = document.querySelector(
+        "input[name='subscription']"
+      );
+      const notifTitle = document.querySelector(".notif-title");
+      subscriptionInput.value = "NO PLANS CHOOSED";
+      notifTitle.textContent = "NO PLANS CHOOSED";
+      const notifMain = document.getElementById("notif-main");
+      if (notifMain) {
+        notifMain.classList.remove("show");
+        notifMain.style.display = "none";
+      }
+    }, 300);
+  });
+
+
+
+
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+    const submitButton = form.querySelector(".form-button");
+    const loader = submitButton.querySelector(".custom-container");
+    const buttonText = submitButton.querySelector(".button-text");
+    const notifMain = document.getElementById("notif-main");
+  
+    // Form submit event listener
+    form.addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent default form submission
+  
+      // Show loader and hide the button text
+      loader.style.display = "block";
+      buttonText.style.display = "none";
+  
+      // Collect form data using FormData
+      const formData = new FormData(form);
+  
+      // Asynchronous form submission using Fetch API
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json()) // Parse JSON response
+        .then((data) => {
+          console.log("Form submitted successfully:", data);
+  
+          // Reset the form after successful submission
+          form.reset();
+  
+          // Hide notification container if it's visible
+          if (notifMain && getComputedStyle(notifMain).display !== "none") {
+            notifMain.style.display = "none";
+          }
+  
+          // Show success alert
+          disableScroll(); // Disable scroll when alert is shown
+          Swal.fire({
+            title: "Good job!",
+            text: "Your message was sent successfully!",
+            icon: "success",
+            confirmButtonText: "OK",
+            background: "#29292c", // Dark background
+            color: "#fff", // White text
+            customClass: {
+              popup: "dark-alert",
+              title: "dark-alert-title",
+              confirmButton: "dark-alert-button",
+            },
+            backdrop: "rgba(0, 0, 0, 0.8)", // Dark backdrop
+            padding: "1rem", // Padding around the alert
+          }).then(() => {
+            enableScroll(); // Re-enable scroll after the alert
+          });
+        })
+        .catch((error) => {
+          console.error("Form submission error:", error);
+  
+          // Show error alert
+          disableScroll(); // Disable scroll when alert is shown
+          Swal.fire({
+            title: "Oops!",
+            text: "Something went wrong. Please try again later.",
+            icon: "error",
+            confirmButtonText: "OK",
+            background: "#29292c", // Dark background
+            color: "#fff", // White text
+            customClass: {
+              popup: "dark-alert",
+              title: "dark-alert-title",
+              confirmButton: "dark-alert-button",
+            },
+            backdrop: "rgba(0, 0, 0, 0.8)", // Dark backdrop
+            padding: "1rem", // Padding around the alert
+          }).then(() => {
+            enableScroll(); // Re-enable scroll after the alert
+            window.location.reload(); // Reload the page
+          });
+        })
+        .finally(() => {
+          // Always hide the loader and show the button text
+          loader.style.display = "none";
+          buttonText.style.display = "block";
+        });
+    });
+  });
