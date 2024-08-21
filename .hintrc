@@ -12,7 +12,8 @@
           "border-image: radial-gradient(circle at 10% 20%, rgb(64, 84, 178) 0%, rgb(219, 2, 234) 90%)",
           "width: fit-content",
           "border-image: radial-gradient(circle at 10% 20%,rgb(64, 84, 178) 0%,rgb(219, 2, 234) 90%)",
-          "text-emphasis-color"
+          "text-emphasis-color",
+          "height: fit-content"
         ]
       }
     ],

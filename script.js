@@ -236,47 +236,64 @@ document.querySelectorAll(".btn-grad.book-now").forEach((button) => {
   });
 });
 
+
+
+
+
+
+
+
+
+
+
+
+// Function to disable body scroll
+function disableScroll() {
+  document.body.style.overflow = 'hidden';
+  document.body.style.position = 'fixed';
+  document.body.style.width = '100%';
+}
+
+// Function to enable only vertical (Y-axis) scroll
+function enableScroll() {
+  document.body.style.overflowY = 'auto'; // Enable vertical scrolling
+  document.body.style.overflowX = 'hidden'; // Keep horizontal scrolling disabled
+  document.body.style.position = 'static';
+  document.body.style.width = 'auto';
+}
+
 // Function to show the notification with smooth transitions
 function showNotification(planTitle = "$199 - STARTUP PLAN") {
   const notifContainer = document.getElementById("notif-container");
   const notifMain = document.getElementById("notif-main");
   const notifTitle = document.querySelector(".notif-title");
 
-  // Apply fade-out effect and set up one-time transition listener
   notifContainer.classList.add("fade-out");
 
-  notifContainer.addEventListener(
-    "transitionend",
-    function onFadeOut() {
-      notifTitle.textContent = planTitle; // Update the title
+  notifContainer.addEventListener("transitionend", function onFadeOut() {
+    notifTitle.textContent = planTitle;
 
-      // Switch from fade-out to fade-in
-      notifContainer.classList.remove("fade-out");
-      notifContainer.classList.add("fade-in");
+    notifContainer.classList.remove("fade-out");
+    notifContainer.classList.add("fade-in");
 
-      notifMain.style.display = "block"; // Ensure visibility of notif-main
-      notifMain.classList.add("show");
+    notifMain.style.display = "block";
+    notifMain.classList.add("show");
 
-      // Remove fade-in class after the transition ends
-      notifContainer.addEventListener(
-        "transitionend",
-        () => {
-          notifContainer.classList.remove("fade-in");
-        },
-        { once: true }
-      );
+    notifContainer.addEventListener("transitionend", () => {
+      notifContainer.classList.remove("fade-in");
+    }, { once: true });
 
-      // Clean up the fade-out listener
-      notifContainer.removeEventListener("transitionend", onFadeOut);
-    },
-    { once: true }
-  );
+    notifContainer.removeEventListener("transitionend", onFadeOut);
+  }, { once: true });
 }
 
 // Function to handle SweetAlert2 dialog and manage notif-main visibility
 function handleCloseNotification() {
   const notifMain = document.getElementById("notif-main");
   const contactSection = document.querySelector("#contact-section.builder");
+
+  // Disable body scroll when alert is shown
+  disableScroll();
 
   Swal.fire({
     title: "Are you sure?",
@@ -290,54 +307,45 @@ function handleCloseNotification() {
     color: "#fff",
     customClass: {
       popup: "swal2-dark",
-      container: "swal2-custom-padding",
     },
-    padding: "1.5rem", // Adjust the padding value for better visual space
+    padding: "1.5rem",
   }).then((result) => {
+
     if (result.isConfirmed) {
       Swal.fire({
         title: "Deleted!",
-        text: "Your file has been deleted successfully.",
+        text: "Your file has been deleted.",
         icon: "success",
         background: "#29292c",
         color: "#fff",
         customClass: {
           popup: "swal2-dark",
-          container: "swal2-custom-padding",
         },
-        padding: "1.5rem", // Consistent padding for success alert
+        padding: "1.5rem",
         confirmButtonColor: "#3085d6",
       }).then(() => {
         notifMain.classList.add("fade-out");
-
-        notifMain.addEventListener(
-          "transitionend",
-          function onClose() {
-            notifMain.style.display = "none"; // Hide after transition
-            notifMain.classList.remove("fade-out", "show"); // Reset classes
-            notifMain.removeEventListener("transitionend", onClose); // Clean up listener
-          },
-          { once: true }
-        );
+        enableScroll();
+        notifMain.addEventListener("transitionend", function onClose() {
+          notifMain.style.display = "none";
+          notifMain.classList.remove("fade-out", "show");
+          notifMain.removeEventListener("transitionend", onClose);
+        }, { once: true });
       });
     } else {
-      // Ensure notif-main remains visible if canceled
       notifMain.style.display = "block";
       notifMain.classList.add("show");
 
-      // Scroll to contact section if it exists
       if (contactSection) {
         setTimeout(() => {
           contactSection.scrollIntoView({ behavior: "smooth" });
 
           setTimeout(() => {
-            contactSection.focus(); // Bring contact section into focus
-          }, 800); // Adjust timeout based on scroll speed
-        }, 200); // Slight delay to ensure smoothness
+            contactSection.focus();
+          }, 800);
+        }, 200);
       } else {
-        console.error(
-          "Contact section with ID 'contact-section' and class 'builder' not found."
-        );
+        console.error("Contact section with ID 'contact-section' and class 'builder' not found.");
       }
     }
   });
@@ -357,9 +365,7 @@ document.getElementById("show-notif-button-3").addEventListener("click", () => {
 });
 
 // Event listener for the close icon with SweetAlert2 handling
-document
-  .getElementById("notif-close-icon")
-  .addEventListener("click", handleCloseNotification);
+document.getElementById("notif-close-icon").addEventListener("click", handleCloseNotification);
 
 // Event listeners to ensure notif-main shows after any button click
 document.querySelectorAll(".scroll-button").forEach((button) => {
@@ -376,35 +382,24 @@ function showNotification(planTitle = "$199 - STARTUP PLAN") {
   const notifTitle = document.querySelector(".notif-title");
   const contactSection = document.getElementById("contact-section");
 
-  // Smooth scroll to #contact-section
   contactSection.scrollIntoView({ behavior: "smooth" });
 
-  // Delay transition start to match scroll duration
   setTimeout(() => {
     notifContainer.classList.add("fade-out");
 
-    notifContainer.addEventListener(
-      "transitionend",
-      function onFadeOut() {
-        notifTitle.textContent = planTitle;
+    notifContainer.addEventListener("transitionend", function onFadeOut() {
+      notifTitle.textContent = planTitle;
 
-        // Switch to fade-in effect
-        notifContainer.classList.remove("fade-out");
-        notifContainer.classList.add("fade-in");
+      notifContainer.classList.remove("fade-out");
+      notifContainer.classList.add("fade-in");
 
-        notifContainer.addEventListener(
-          "transitionend",
-          () => {
-            notifContainer.classList.remove("fade-in");
-          },
-          { once: true }
-        );
+      notifContainer.addEventListener("transitionend", () => {
+        notifContainer.classList.remove("fade-in");
+      }, { once: true });
 
-        notifContainer.removeEventListener("transitionend", onFadeOut); // Clean up
-      },
-      { once: true }
-    );
-  }, 500); // Adjust delay time as needed
+      notifContainer.removeEventListener("transitionend", onFadeOut);
+    }, { once: true });
+  }, 500);
 }
 
 // Event listeners for buttons with different titles
