@@ -11,6 +11,28 @@ body {
   font-family: Arial, sans-serif;
   overflow-x: hidden;
 }
+
+@media (min-width: 1024px) {
+  body::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  body::-webkit-scrollbar-track {
+    background: rgb(27, 9, 29);
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
+    border-radius: 10px;
+    border: 3px solid rgb(27, 9, 29);
+    transition: background 0.3s ease;
+  }
+
+  body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(319deg, #aa00ff 0%, #cc4499 37%, #ff77cc 100%);
+  }
+}
+
 /*CSS FONTS*/
 @font-face {
   font-family: League Spartan;
@@ -186,12 +208,12 @@ body {
   font-size: 18px;
   position: relative;
   overflow: hidden;
-}
 
-.btn-grad:hover {
-  background-position: right center;
-  color: #fff;
-  text-decoration: none;
+  &:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+  }
 }
 
 .btn-grad:active {
@@ -1196,7 +1218,7 @@ body {
   padding-bottom: 6px;
   font-weight: 700;
   border-width: 3px;
-  border-image: radial-gradient(circle at 10% 20%,rgb(64, 84, 178) 0%,rgb(219, 2, 234) 90%);
+  border-image: radial-gradient(circle at 10% 20%, rgb(64, 84, 178) 0%, rgb(219, 2, 234) 90%);
   border-image-slice: 1;
 }
 
@@ -2714,4 +2736,182 @@ textarea.form__field {
 
 .scroll-dropdown-header i.active:hover {
   color: gray; /* Icon color on hover when active */
+}
+
+.notif-main {
+  opacity: 0;
+  transform: translateY(20px); /* Initially move the element slightly down */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+  display: none; /* Hide initially */
+}
+
+.notif-main.show {
+  display: block; /* Display when triggered */
+  opacity: 1;
+  transform: translateY(0); /* Bring it back to the original position */
+}
+
+.notif-space {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.notif-container {
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  position: relative;
+  width: auto;
+  height: 4.5rem;
+  background: #29292c;
+  border-radius: 1rem;
+  overflow: hidden;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 16px;
+  --notif-gradient: linear-gradient(
+    -225deg,
+    #ff057c 0%,
+    #8d0b93 50%,
+    #321575 100%
+  );
+  padding-right: 2rem;
+  will-change: opacity, transform;
+}
+
+.notif-container i {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  color: #99999d;
+  font-size: 1.3rem;
+  cursor: pointer;
+  z-index: 5;
+  transition: color 300ms ease;
+}
+
+.notif-container i:hover {
+  color: white;
+}
+
+.notif-container i:active {
+  color: red;
+}
+
+.notif-container:before {
+  position: absolute;
+  content: "";
+  inset: 0.0625rem;
+  border-radius: 0.9375rem;
+  background: #18181b;
+  z-index: 2;
+}
+
+.notif-container:after {
+  position: absolute;
+  content: "";
+  width: 0.25rem;
+  inset: 0.65rem auto 0.65rem 0.5rem;
+  border-radius: 0.125rem;
+  background: var(--notif-gradient);
+  transition: transform 300ms ease;
+  z-index: 4;
+}
+
+.notif-container:hover:after {
+  transform: translateX(0.15rem);
+}
+
+.notif-title {
+  background: linear-gradient(-225deg, #ff057c 0%, #8d0b93 50%, #321575 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-emphasis-color: transparent;
+  padding: 0.65rem 0.25rem 0.4rem 1.25rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: transform 300ms ease;
+  z-index: 5;
+}
+
+.notif-container:hover .notif-title {
+  transform: translateX(0.15rem);
+}
+
+.notif-body {
+  color: #99999d;
+  padding: 0 1.25rem;
+  transition: transform 300ms ease;
+  z-index: 5;
+}
+
+.notif-container:hover .notif-body {
+  transform: translateX(0.25rem);
+}
+
+.notif-glow,
+.notif-border-glow {
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle closest-side at center,
+    white,
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.notif-glow {
+  z-index: 3;
+}
+
+.notif-border-glow {
+  z-index: 1;
+}
+
+.notif-container:hover .notif-glow {
+  opacity: 0.1;
+}
+
+.notif-container:hover .notif-border-glow {
+  opacity: 0.1;
+}
+
+.notif-note {
+  color: var(--color);
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 0.9rem;
+  width: 75%;
+}
+
+/*Transitions*/
+.notif-container {
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.notif-container.fade-out {
+  opacity: 0;
+  transform: translateY(-10px); /* Slight upward movement during fade-out */
+}
+
+.notif-container.fade-in {
+  opacity: 1;
+  transform: translateY(0); /* Reset to original position */
+}
+
+.notif-main {
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.notif-main.fade-out {
+  opacity: 0;
+  transform: translateY(-20px); /* Slight upward movement during fade-out */
 }

@@ -235,3 +235,187 @@ document.querySelectorAll(".btn-grad.book-now").forEach((button) => {
     }
   });
 });
+
+// Function to show the notification with smooth transitions
+function showNotification(planTitle = "$199 - STARTUP PLAN") {
+  const notifContainer = document.getElementById("notif-container");
+  const notifMain = document.getElementById("notif-main");
+  const notifTitle = document.querySelector(".notif-title");
+
+  // Apply fade-out effect and set up one-time transition listener
+  notifContainer.classList.add("fade-out");
+
+  notifContainer.addEventListener(
+    "transitionend",
+    function onFadeOut() {
+      notifTitle.textContent = planTitle; // Update the title
+
+      // Switch from fade-out to fade-in
+      notifContainer.classList.remove("fade-out");
+      notifContainer.classList.add("fade-in");
+
+      notifMain.style.display = "block"; // Ensure visibility of notif-main
+      notifMain.classList.add("show");
+
+      // Remove fade-in class after the transition ends
+      notifContainer.addEventListener(
+        "transitionend",
+        () => {
+          notifContainer.classList.remove("fade-in");
+        },
+        { once: true }
+      );
+
+      // Clean up the fade-out listener
+      notifContainer.removeEventListener("transitionend", onFadeOut);
+    },
+    { once: true }
+  );
+}
+
+// Function to handle SweetAlert2 dialog and manage notif-main visibility
+function handleCloseNotification() {
+  const notifMain = document.getElementById("notif-main");
+  const contactSection = document.querySelector("#contact-section.builder");
+
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+    background: "#29292c",
+    color: "#fff",
+    customClass: {
+      popup: "swal2-dark",
+      container: "swal2-custom-padding",
+    },
+    padding: "1.5rem", // Adjust the padding value for better visual space
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted successfully.",
+        icon: "success",
+        background: "#29292c",
+        color: "#fff",
+        customClass: {
+          popup: "swal2-dark",
+          container: "swal2-custom-padding",
+        },
+        padding: "1.5rem", // Consistent padding for success alert
+        confirmButtonColor: "#3085d6",
+      }).then(() => {
+        notifMain.classList.add("fade-out");
+
+        notifMain.addEventListener(
+          "transitionend",
+          function onClose() {
+            notifMain.style.display = "none"; // Hide after transition
+            notifMain.classList.remove("fade-out", "show"); // Reset classes
+            notifMain.removeEventListener("transitionend", onClose); // Clean up listener
+          },
+          { once: true }
+        );
+      });
+    } else {
+      // Ensure notif-main remains visible if canceled
+      notifMain.style.display = "block";
+      notifMain.classList.add("show");
+
+      // Scroll to contact section if it exists
+      if (contactSection) {
+        setTimeout(() => {
+          contactSection.scrollIntoView({ behavior: "smooth" });
+
+          setTimeout(() => {
+            contactSection.focus(); // Bring contact section into focus
+          }, 800); // Adjust timeout based on scroll speed
+        }, 200); // Slight delay to ensure smoothness
+      } else {
+        console.error(
+          "Contact section with ID 'contact-section' and class 'builder' not found."
+        );
+      }
+    }
+  });
+}
+
+// Event listeners for buttons with different plan titles
+document.getElementById("show-notif-button-1").addEventListener("click", () => {
+  showNotification("$199 - STARTUP PLAN");
+});
+
+document.getElementById("show-notif-button-2").addEventListener("click", () => {
+  showNotification("$399 - GROWTH PLAN");
+});
+
+document.getElementById("show-notif-button-3").addEventListener("click", () => {
+  showNotification("$599 - PREMIUM PLAN");
+});
+
+// Event listener for the close icon with SweetAlert2 handling
+document
+  .getElementById("notif-close-icon")
+  .addEventListener("click", handleCloseNotification);
+
+// Event listeners to ensure notif-main shows after any button click
+document.querySelectorAll(".scroll-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    const notifMain = document.getElementById("notif-main");
+    notifMain.style.display = "block";
+    notifMain.classList.add("show");
+  });
+});
+
+// Function to scroll smoothly to the contact section and display notification
+function showNotification(planTitle = "$199 - STARTUP PLAN") {
+  const notifContainer = document.getElementById("notif-container");
+  const notifTitle = document.querySelector(".notif-title");
+  const contactSection = document.getElementById("contact-section");
+
+  // Smooth scroll to #contact-section
+  contactSection.scrollIntoView({ behavior: "smooth" });
+
+  // Delay transition start to match scroll duration
+  setTimeout(() => {
+    notifContainer.classList.add("fade-out");
+
+    notifContainer.addEventListener(
+      "transitionend",
+      function onFadeOut() {
+        notifTitle.textContent = planTitle;
+
+        // Switch to fade-in effect
+        notifContainer.classList.remove("fade-out");
+        notifContainer.classList.add("fade-in");
+
+        notifContainer.addEventListener(
+          "transitionend",
+          () => {
+            notifContainer.classList.remove("fade-in");
+          },
+          { once: true }
+        );
+
+        notifContainer.removeEventListener("transitionend", onFadeOut); // Clean up
+      },
+      { once: true }
+    );
+  }, 500); // Adjust delay time as needed
+}
+
+// Event listeners for buttons with different titles
+document.getElementById("show-notif-button-1").addEventListener("click", () => {
+  showNotification("$199 - STARTUP PLAN");
+});
+
+document.getElementById("show-notif-button-2").addEventListener("click", () => {
+  showNotification("$399 - GROWTH PLAN");
+});
+
+document.getElementById("show-notif-button-3").addEventListener("click", () => {
+  showNotification("$599 - PREMIUM PLAN");
+});
