@@ -21,7 +21,6 @@ body {
   body::-webkit-scrollbar-track {
     background: rgb(27, 9, 29);
   }
-
   body::-webkit-scrollbar-thumb {
     background: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
     border-radius: 10px;
@@ -2921,3 +2920,31 @@ textarea.form__field {
   transition: opacity 0.1s ease-in-out; /* Adjusted for smoother transitions */
   opacity: 1;
 }
+
+.mobile_text {
+  position: fixed;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 80%; /* Ensure the container takes the full width */
+}
+
+.mobile_text p {
+  font-size: 0.45em;
+  text-shadow: 0 0 7px rgba(255, 255, 255, 0.3),
+              0 0 3px rgba(255, 255, 255, 0.3);
+  margin: 5px; /* Add some margin to create space between text elements */
+  flex: 1; /* Allow the text to grow and shrink within the container */
+}
+
+@media screen and (min-width: 1024px) {
+  .mobile_text {
+    display: none;
+  }
+}
+
