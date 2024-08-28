@@ -2918,3 +2918,7 @@ textarea.form__field {
   transform: translateY(-20px); /* Slight upward movement during fade-out */
 }
 
+#favicon {
+  transition: opacity 0.1s ease-in-out; /* Adjusted for smoother transitions */
+  opacity: 1;
+}

@@ -541,3 +541,46 @@ document
         });
     });
   });
+
+
+
+  const originalFavicon = "./img/favicon.ico";
+  const grayFavicon = "./img/favicon-gray.ico";
+  const favicon = document.getElementById("favicon");
+
+  // Function to change favicon instantly (for leaving the site)
+  function changeFaviconInstant(src) {
+    if (favicon) {
+      favicon.href = src;
+      favicon.style.opacity = 1; // Ensure it stays visible without transition delay
+    }
+  }
+
+  // Function to change favicon with a smooth transition (for entering the site)
+  function changeFaviconSmooth(src) {
+    if (favicon) {
+      favicon.style.opacity = 0; // Fade out quickly
+      setTimeout(() => {
+        favicon.href = src;
+        favicon.style.opacity = 1; // Fade back in
+      }, 100); // Short fade-out time for faster switch
+    }
+  }
+
+  // Handle visibility change (switching tabs)
+  document.addEventListener("visibilitychange", function() {
+    if (document.visibilityState === "hidden") {
+      changeFaviconInstant(grayFavicon); // Immediate change when leaving
+    } else if (document.visibilityState === "visible") {
+      changeFaviconSmooth(originalFavicon); // Smooth transition when returning
+    }
+  });
+
+  // Handle focus and blur events (leaving/entering the window)
+  window.addEventListener("blur", function() {
+    changeFaviconInstant(grayFavicon); // Immediate change when leaving
+  });
+
+  window.addEventListener("focus", function() {
+    changeFaviconSmooth(originalFavicon); // Smooth transition when returning
+  });
