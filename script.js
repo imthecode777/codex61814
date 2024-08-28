@@ -450,137 +450,129 @@ document
     }, 300);
   });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contact-form");
+  const submitButton = form.querySelector(".form-button");
+  const loader = submitButton.querySelector(".custom-container");
+  const buttonText = submitButton.querySelector(".button-text");
+  const notifMain = document.getElementById("notif-main");
 
+  // Form submit event listener
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default form submission
 
+    // Show loader and hide the button text
+    loader.style.display = "block";
+    buttonText.style.display = "none";
 
+    // Collect form data using FormData
+    const formData = new FormData(form);
 
+    // Asynchronous form submission using Fetch API
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json()) // Parse JSON response
+      .then((data) => {
+        console.log("Form submitted successfully:", data);
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("contact-form");
-    const submitButton = form.querySelector(".form-button");
-    const loader = submitButton.querySelector(".custom-container");
-    const buttonText = submitButton.querySelector(".button-text");
-    const notifMain = document.getElementById("notif-main");
-  
-    // Form submit event listener
-    form.addEventListener("submit", function (event) {
-      event.preventDefault(); // Prevent default form submission
-  
-      // Show loader and hide the button text
-      loader.style.display = "block";
-      buttonText.style.display = "none";
-  
-      // Collect form data using FormData
-      const formData = new FormData(form);
-  
-      // Asynchronous form submission using Fetch API
-      fetch(form.action, {
-        method: "POST",
-        body: formData,
-      })
-        .then((response) => response.json()) // Parse JSON response
-        .then((data) => {
-          console.log("Form submitted successfully:", data);
-  
-          // Reset the form after successful submission
-          form.reset();
-  
-          // Hide notification container if it's visible
-          if (notifMain && getComputedStyle(notifMain).display !== "none") {
-            notifMain.style.display = "none";
-          }
-  
-          // Show success alert
-          disableScroll(); // Disable scroll when alert is shown
-          Swal.fire({
-            title: "Good job!",
-            text: "Your message was sent successfully!",
-            icon: "success",
-            confirmButtonText: "OK",
-            background: "#29292c", // Dark background
-            color: "#fff", // White text
-            customClass: {
-              popup: "dark-alert",
-              title: "dark-alert-title",
-              confirmButton: "dark-alert-button",
-            },
-            backdrop: "rgba(0, 0, 0, 0.8)", // Dark backdrop
-            padding: "1rem", // Padding around the alert
-          }).then(() => {
-            enableScroll(); // Re-enable scroll after the alert
-          });
-        })
-        .catch((error) => {
-          console.error("Form submission error:", error);
-  
-          // Show error alert
-          disableScroll(); // Disable scroll when alert is shown
-          Swal.fire({
-            title: "Oops!",
-            text: "Something went wrong. Please try again later.",
-            icon: "error",
-            confirmButtonText: "OK",
-            background: "#29292c", // Dark background
-            color: "#fff", // White text
-            customClass: {
-              popup: "dark-alert",
-              title: "dark-alert-title",
-              confirmButton: "dark-alert-button",
-            },
-            backdrop: "rgba(0, 0, 0, 0.8)", // Dark backdrop
-            padding: "1rem", // Padding around the alert
-          }).then(() => {
-            enableScroll(); // Re-enable scroll after the alert
-            window.location.reload(); // Reload the page
-          });
-        })
-        .finally(() => {
-          // Always hide the loader and show the button text
-          loader.style.display = "none";
-          buttonText.style.display = "block";
+        // Reset the form after successful submission
+        form.reset();
+
+        // Hide notification container if it's visible
+        if (notifMain && getComputedStyle(notifMain).display !== "none") {
+          notifMain.style.display = "none";
+        }
+
+        // Show success alert
+        disableScroll(); // Disable scroll when alert is shown
+        Swal.fire({
+          title: "Good job!",
+          text: "Your message was sent successfully!",
+          icon: "success",
+          confirmButtonText: "OK",
+          background: "#29292c", // Dark background
+          color: "#fff", // White text
+          customClass: {
+            popup: "dark-alert",
+            title: "dark-alert-title",
+            confirmButton: "dark-alert-button",
+          },
+          backdrop: "rgba(0, 0, 0, 0.8)", // Dark backdrop
+          padding: "1rem", // Padding around the alert
+        }).then(() => {
+          enableScroll(); // Re-enable scroll after the alert
         });
-    });
+      })
+      .catch((error) => {
+        console.error("Form submission error:", error);
+
+        // Show error alert
+        disableScroll(); // Disable scroll when alert is shown
+        Swal.fire({
+          title: "Oops!",
+          text: "Something went wrong. Please try again later.",
+          icon: "error",
+          confirmButtonText: "OK",
+          background: "#29292c", // Dark background
+          color: "#fff", // White text
+          customClass: {
+            popup: "dark-alert",
+            title: "dark-alert-title",
+            confirmButton: "dark-alert-button",
+          },
+          backdrop: "rgba(0, 0, 0, 0.8)", // Dark backdrop
+          padding: "1rem", // Padding around the alert
+        }).then(() => {
+          enableScroll(); // Re-enable scroll after the alert
+          window.location.reload(); // Reload the page
+        });
+      })
+      .finally(() => {
+        // Always hide the loader and show the button text
+        loader.style.display = "none";
+        buttonText.style.display = "block";
+      });
   });
+});
 
+const originalFavicon = "./img/favicon.ico";
+const grayFavicon = "./img/favicon-gray.ico";
+const favicon = document.getElementById("favicon");
 
+// Function to change favicon instantly (for leaving the site)
+function changeFaviconInstant(src) {
+  if (favicon) {
+    favicon.href = src;
+    favicon.style.opacity = 1; // Ensure it stays visible without transition delay
+  }
+}
 
-  const originalFavicon = "./img/favicon.ico";
-  const grayFavicon = "./img/favicon-gray.ico";
-  const favicon = document.getElementById("favicon");
-
-  // Function to change favicon instantly (for leaving the site)
-  function changeFaviconInstant(src) {
-    if (favicon) {
+// Function to change favicon with a smooth transition (for entering the site)
+function changeFaviconSmooth(src) {
+  if (favicon) {
+    favicon.style.opacity = 0; // Fade out quickly
+    setTimeout(() => {
       favicon.href = src;
-      favicon.style.opacity = 1; // Ensure it stays visible without transition delay
-    }
+      favicon.style.opacity = 1; // Fade back in
+    }, 100); // Short fade-out time for faster switch
   }
+}
 
-  // Function to change favicon with a smooth transition (for entering the site)
-  function changeFaviconSmooth(src) {
-    if (favicon) {
-      favicon.style.opacity = 0; // Fade out quickly
-      setTimeout(() => {
-        favicon.href = src;
-        favicon.style.opacity = 1; // Fade back in
-      }, 100); // Short fade-out time for faster switch
-    }
-  }
-
-  // Handle visibility change (switching tabs)
-  document.addEventListener("visibilitychange", function() {
-    if (document.visibilityState === "hidden") {
-      changeFaviconInstant(grayFavicon); // Immediate change when leaving
-    } else if (document.visibilityState === "visible") {
-      changeFaviconSmooth(originalFavicon); // Smooth transition when returning
-    }
-  });
-
-  // Handle focus and blur events (leaving/entering the window)
-  window.addEventListener("blur", function() {
+// Handle visibility change (switching tabs)
+document.addEventListener("visibilitychange", function () {
+  if (document.visibilityState === "hidden") {
     changeFaviconInstant(grayFavicon); // Immediate change when leaving
-  });
-
-  window.addEventListener("focus", function() {
+  } else if (document.visibilityState === "visible") {
     changeFaviconSmooth(originalFavicon); // Smooth transition when returning
-  });
+  }
+});
+
+window.addEventListener("blur", function () {
+  changeFaviconInstant(grayFavicon);
+});
+
+window.addEventListener("focus", function () {
+  changeFaviconSmooth(originalFavicon);
+});
