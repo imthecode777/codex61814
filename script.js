@@ -315,8 +315,8 @@ function handleCloseNotification() {
         padding: "1.5rem",
         confirmButtonColor: "#3085d6",
       }).then(() => {
-        notifMain.classList.add("fade-out");
         enableScroll();
+        notifMain.classList.add("fade-out");
         notifMain.addEventListener(
           "transitionend",
           function onClose() {
@@ -334,7 +334,7 @@ function handleCloseNotification() {
       if (contactSection) {
         setTimeout(() => {
           contactSection.scrollIntoView({ behavior: "smooth" });
-
+          enableScroll();
           setTimeout(() => {
             contactSection.focus();
           }, 800);
