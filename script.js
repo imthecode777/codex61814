@@ -537,8 +537,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-const originalFavicon = "./img/favicon.ico";
-const grayFavicon = "./img/favicon-gray.ico";
+const originalFavicon = "https://codex61814.xyz/img/favicon.ico";
+const grayFavicon = "https://codex61814.xyz/img/favicon-gray.ico";
 const favicon = document.getElementById("favicon");
 
 // Function to change favicon instantly (for leaving the site)
