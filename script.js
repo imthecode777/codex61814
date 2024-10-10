@@ -545,7 +545,7 @@ const favicon = document.getElementById("favicon");
 function changeFaviconInstant(src) {
   if (favicon) {
     favicon.href = src;
-    favicon.style.opacity = 1; // Ensure it stays visible without transition delay
+    favicon.style.opacity = 1; // Ensure i  6t stays visible without transition delay
   }
 }
 
