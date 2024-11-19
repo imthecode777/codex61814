@@ -3,7 +3,7 @@
 
 # CODEX61814  
 
-![Portfolio Screenshot](https://github.com/imthecode777/codex61814/blob/main/img/nav_logo.png)
+![Portfolio Screenshot](https://github.com/imthecode777/codex61814/blob/main/img/nav_logo.svg)
 
 [![Portfolio Link](https://img.shields.io/badge/Portfolio-Website-blue?style=flat-square)](https://codex61814.xyz/)  
 ![GitHub last commit](https://img.shields.io/github/last-commit/imthecode777/codex61814)  
